@@ -12,7 +12,7 @@ import { NavItem, NavLink, Nav } from "reactstrap";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 
-import SubMenu from "./SubMenu";
+import SubMenu from "./submenu";
 import './sidebar.scss'
 
 const SideBar = ({ isOpen, toggle }) => (
