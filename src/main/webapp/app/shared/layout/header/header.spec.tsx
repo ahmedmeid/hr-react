@@ -16,6 +16,7 @@ describe('Header', () => {
     ribbonEnv: 'dev',
     isInProduction: false,
     isOpenAPIEnabled: true,
+    doSomething: (x) => (!x) 
   };
   const prodProps = {
     ...devProps,
