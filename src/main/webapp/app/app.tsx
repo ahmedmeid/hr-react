@@ -3,9 +3,10 @@ import './app.scss';
 import 'app/config/dayjs.ts';
 
 import React, { useEffect, useState } from 'react';
-import { Card } from 'reactstrap';
+import { Card, Container } from 'reactstrap';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import classNames from "classnames";
 
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { getSession } from 'app/shared/reducers/authentication';
@@ -38,15 +39,20 @@ export const App = () => {
 
   const paddingTop = '60px';
 
-  const [sidebarIsOpen, setSidebarOpen] = useState(true);
+  const [sidebarIsOpen, setSidebarOpen] = useState(false);
   const toggleSidebar = () => setSidebarOpen(!sidebarIsOpen);
 
   return (
     <Router basename={baseHref}>
+      <div className="App wrapper">
+      <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
+      <Container
+    fluid
+    className={classNames("content", { "is-open": sidebarIsOpen })}
+  >
       <div className="app-container" style={{ paddingTop }}>
         <ToastContainer position={toast.POSITION.TOP_LEFT} className="toastify-container" toastClassName="toastify-toast" />
-        <ErrorBoundary>
-          <SideBar toggle={toggleSidebar} isOpen={sidebarIsOpen} />
+        <ErrorBoundary>       
           <Header
             isAuthenticated={isAuthenticated}
             isAdmin={isAdmin}
@@ -65,6 +71,8 @@ export const App = () => {
           </Card>
           <Footer />
         </div>
+        </div>
+        </Container>
       </div>
     </Router>
   );

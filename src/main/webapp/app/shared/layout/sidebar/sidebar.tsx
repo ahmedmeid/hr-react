@@ -13,7 +13,6 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 
 import SubMenu from "./submenu";
-import './sidebar.scss'
 
 const SideBar = ({ isOpen, toggle }) => (
   <div className={classNames("sidebar", { "is-open": isOpen })}>
